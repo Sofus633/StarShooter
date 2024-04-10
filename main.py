@@ -79,8 +79,8 @@ class App:
                 
         player1.counter += 1
         
-        if random.randint(0, 12) == 12:
-            enm = Enemy((random.randint(0, 160), random.randint(0, 160)), player1)
+        if random.randint(0, 290000) == 12:
+            enm = Enemy((random.randint(0, 160), random.randint(0, 160)), player1, enemys, ToDraw)
             ToDraw.add_object(enm)
             enemys.append(enm)
         
@@ -117,8 +117,9 @@ def normalize_vector(vector):
 
 ToDraw = ObjectList()
 player1 = Player([1, 5])
-enemy1 = Enemy((5, 1), player1)
-enemys = [enemy1]
+enemys = []
+enemy1 = Enemy((5, 1), player1, enemys, ToDraw)
+enemys.append(enemy1)
 projecticle = Projectile([1, 0], [1, 0], enemys, ToDraw)
 
 ToDraw.add_object(player1)

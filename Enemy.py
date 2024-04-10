@@ -2,19 +2,22 @@ import pyxel
 import math
 
 class Enemy:
-    def __init__(self, pos, target):
+    def __init__(self, pos, target, listof, ToDraw):
         self.pos = pos
         self.wh = 8, 8
         self.skin = [32, 0]
         self.vector = (0, 0)
         self.player = target
         self.heal = 10
+        self.listofe = listof
+        self.ToDraw = ToDraw
         
     def update(self):
         self.vector = generate_unit_vector(self.pos, self.player.pos)
         self.pos = plustupl(self.vector, self.pos)
         if self.heal < 0:
-            del self
+            self.listofe.remove(self)
+            self.ToDraw.delete_object(self)
         
         
 def generate_unit_vector(start, end):
